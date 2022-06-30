@@ -2,13 +2,14 @@
 
 set -e
 
-RESTIC_SERVER=$(yunohost app setting {{ app }} server)
-RESTIC_SERVER_PORT=$(yunohost app setting {{ app }} port)
-RESTIC_SERVER_USER=$(yunohost app setting {{ app }} ssh_user)
-RESTIC_PATH=$(yunohost app setting {{ app }} backup_path)
+RESTIC_REPO=$(yunohost app setting {{ app }} b2_repo)
+B2_ACCOUNT_ID="$(yunohost app setting {{ app }} b2_id)"
+B2_ACCOUNT_KEY="$(yunohost app setting {{ app }} b2_key)"
+RESTIC_PASSWORD="$(yunohost app setting {{ app }} passphrase)"
+RESTIC_REPOSITORY_BASE=b2:$RESTIC_REPO:
 
 RESTIC_PASSWORD="$(yunohost app setting {{ app }} passphrase)"
-RESTIC_REPOSITORY_BASE=sftp://$RESTIC_SERVER_USER@$RESTIC_SERVER:$RESTIC_SERVER_PORT/$RESTIC_PATH/
+RESTIC_REPOSITORY_BASE=b2:$RESTIC_REPO:
 
 RESTIC_COMMAND=/usr/local/bin/{{ app }}
 
@@ -17,7 +18,9 @@ do_check() {
     local name="$1"
     local check_read_data="$2"
     export RESTIC_PASSWORD
-    export RESTIC_REPOSITORY=${RESTIC_REPOSITORY_BASE}/$name
+    export RESTIC_REPOSITORY=${RESTIC_REPOSITORY_BASE}
+    export B2_ACCOUNT_ID
+    export B2_ACCOUNT_KEY
     LOGFILE=/var/log/restic_check_{{ app }}.log
     ERRFILE=/var/log/restic_check_{{ app }}.err
     current_date=$(date --iso-8601=seconds)

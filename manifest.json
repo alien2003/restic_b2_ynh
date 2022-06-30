@@ -28,54 +28,29 @@
   "arguments": {
     "install" : [
       {
-        "name": "server",
+        "name": "b2_repo",
         "type": "string",
         "ask": {
-          "en": "Indicate the server where you want put your backups",
-          "fr": "Indiquez le serveur où vous voulez faire vos sauvegardes"
+          "en": "Indicate the repo where you want put your backups"
         },
         "help":{
-          "en": "IP address or resolvable hostname of your destination server",
-          "fr": "Adresse IP ou nom résolvable de votre serveur de destination"
+          "en": "Your destination B2 repo"
         },
         "example": "example.com"
       },
       {
-        "name": "port",
-        "type": "string",
+        "name": "b2_id",
+        "type": "password",
         "ask": {
-          "en": "sftp port of your server",
-          "fr": "Le port sftp de votre serveur"
-        },
-        "help":{
-          "en": "Listening port of your sftp or ssh server. The default value is 22",
-          "fr": "Le port d'écoute de votre serveur sftp ou ssh. La valeur par défaut est 22"
-        },
-        "example": "22",
-        "default": "22"
+          "en": "Provide your B2 id"
+        }
       },
       {
-        "name": "backup_path",
-        "type": "string",
+        "name": "b2_key",
+        "type": "password",
         "ask": {
-          "en": "The directory where you want your backup repositories to be created in",
-          "fr": "Le répertoire dans lequel les dépôts restic seront créés"
-        },
-        "help":{
-          "en": "A complete or relative path to an existing directory on the remote server writable by the remote backup user. Defaults to the login directory",
-          "fr": "Un chemin complet ou relatif vers un répertoire existant sur le serveur distant et accessible en écriture au compte utilisé pour la sauvegarde. Répertoire d'accueil par défaut"
-        },
-        "example": "./backups",
-    "default": "."
-      },
-      {
-        "name": "ssh_user",
-        "type": "string",
-        "ask": {
-          "en": "Indicate the ssh user to use to connect on this server",
-          "fr": "Indiquez l'utilisateur ssh à utiliser pour se connecter au serveur"
-        },
-        "example": "john"
+          "en": "Provide your B2 key"
+        }
       },
       {
         "name": "passphrase",
