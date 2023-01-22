@@ -18,7 +18,7 @@ do_check() {
     local name="$1"
     local check_read_data="$2"
     export RESTIC_PASSWORD
-    export RESTIC_REPOSITORY=${RESTIC_REPOSITORY_BASE}
+    export RESTIC_REPOSITORY=${RESTIC_REPOSITORY_BASE}/$name
     export B2_ACCOUNT_ID
     export B2_ACCOUNT_KEY
     LOGFILE=/var/log/restic_check_{{ app }}.log

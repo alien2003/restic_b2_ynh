@@ -25,7 +25,7 @@ do_need_mount() {
     size="$4"
     description="$5"
     export RESTIC_PASSWORD
-    export RESTIC_REPOSITORY=${RESTIC_REPOSITORY_BASE}
+    export RESTIC_REPOSITORY=${RESTIC_REPOSITORY_BASE}/$name
     export B2_ACCOUNT_ID
     export B2_ACCOUNT_KEY
 
@@ -41,7 +41,7 @@ do_backup() {
     size="$4"
     description="$5"
     export RESTIC_PASSWORD
-    export RESTIC_REPOSITORY=${RESTIC_REPOSITORY_BASE}
+    export RESTIC_REPOSITORY=${RESTIC_REPOSITORY_BASE}/$name
     export B2_ACCOUNT_ID
     export B2_ACCOUNT_KEY
     current_date=$(date +"%d_%m_%y_%H:%M")
