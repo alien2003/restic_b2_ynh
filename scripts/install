@@ -76,6 +76,7 @@ ynh_configure check_method "${final_path}/check_method_${app}"
 # SETUP LOG SCRIPTS
 #=================================================
 ynh_script_progression --message="Setting up backup log script"
+
 ynh_configure restic_log "${final_path}/restic_log_${app}"
 chmod +x "${final_path}/restic_log_${app}"
 chown ${app}: "${final_path}/restic_log_${app}"
